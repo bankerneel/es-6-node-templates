@@ -1,7 +1,10 @@
 const winston = require('winston');
 
 const myFormat = winston.format.printf(
-  (info) => `${info.level} | ${JSON.stringify(info.message.split('\n')[0])}`,
+  (info) =>
+    `(${Date(info.timestamp)}: ${info.level} | ${JSON.stringify(
+      info.message.split('\n')[0],
+    )}`,
 );
 const logger = winston.createLogger({
   transports: [
